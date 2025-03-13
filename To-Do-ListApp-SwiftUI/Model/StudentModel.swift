@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct StudentModel: Identifiable {
+    var id: Int?
+    let student_name: String?
+    let student_email: String?
+    let student_class: String?
+    let student_rollno: String?
+    
+   
+}
+
+
