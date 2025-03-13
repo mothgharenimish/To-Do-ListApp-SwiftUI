@@ -28,7 +28,7 @@ struct StudentCard: View {
                     .font(.headline)
                     .fontWeight(.bold)
 
-                Text((students?.student_email!)!)
+                Text((students?.student_email)!)
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundStyle(.red)
@@ -38,7 +38,7 @@ struct StudentCard: View {
                     .fontWeight(.bold)
                     .foregroundStyle(.red)
                 
-                Text((students?.student_rollno!)!)
+                Text((students?.student_rollno)!)
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundStyle(.red)

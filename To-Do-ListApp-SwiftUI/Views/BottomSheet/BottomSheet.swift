@@ -48,9 +48,8 @@ struct BottomSheet: View {
 
 #Preview {
     BottomSheet(isShowing: .constant(true)) {
-        BottomSheetView { _ in } onEdit: { newedited in
-            print("The new edited student \(newedited)")
-            
+        BottomSheetView(student: nil) { newStudent in
+            print("Student Added or Edited: \(newStudent)")
         }
-       }
+    }
 }
