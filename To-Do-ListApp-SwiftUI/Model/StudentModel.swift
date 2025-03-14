@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct StudentModel: Identifiable {
+struct StudentModel: Identifiable,Codable {
     var id: Int?
     let student_name: String?
     let student_email: String?

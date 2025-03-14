@@ -11,9 +11,7 @@ struct StudentDetails: View {
     
     @State private var isShowingBottomSheet = false
     @State private var selectedStudent: StudentModel?
-    @State private var students: [StudentModel] = [
-        StudentModel(id: 0, student_name: "Nimish Mothghare", student_email: "nimishm90@gmail.com", student_class: "9th Standard", student_rollno: "18")
-    ]
+    @State private var students: [StudentModel] = []
     
     var body: some View {
         
@@ -46,11 +44,20 @@ struct StudentDetails: View {
                                 students[index] = newStudent
                             } else {
                                 students.append(newStudent)
+                                if let encodeData = try?JSONEncoder().encode(students) {
+                                    UserDefaults.standard.set(encodeData, forKey: "StudentInfo")
+                                    
+                                    print("The Encode data will be \(encodeData)")
+                                    
+                                }
                             }
+                            
+                                
                             isShowingBottomSheet = false
                         }
                     }
                 }
+                
             }
             .navigationTitle("Student Details")
             .navigationBarBackButtonHidden(true) // Hides the back button
@@ -64,6 +71,17 @@ struct StudentDetails: View {
                         Image(systemName: "plus")
                             .foregroundStyle(.white)
                     }
+                }
+            }
+        
+            .onAppear {
+                
+                if let decodeData = UserDefaults.standard.data(forKey: "StudentInfo") {
+                    
+                    let decode = try! JSONDecoder().decode([StudentModel].self,from: decodeData)
+                    students = decode
+                    
+                    print("The Decode data will be \(decode)")
                 }
             }
     }
